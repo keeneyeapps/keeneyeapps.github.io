@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — WARN</title>
+<link rel="canonical" href="https://keeneyeapps.github.io/warn/privacy.html">
+<style>
+  :root {
+    --brand-dark-1: #2B2B2B;
+    --brand-dark-2: #1A1A1A;
+    --brand-yellow: #FFD200;
+    --card-bg: #1E1E1E;
+    --card-border: #3A3A3A;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--brand-dark-1), var(--brand-dark-2));
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    padding: 24px 16px 48px;
+  }
+  .page { max-width: 720px; margin: 0 auto; }
+  .hazard-rule {
+    height: 8px;
+    border-radius: 4px;
+    margin: 0 0 18px;
+    background: repeating-linear-gradient(
+      45deg, var(--brand-yellow) 0 12px, #111111 12px 24px
+    );
+  }
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 0 0 4px;
+  }
+  .updated {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
+    margin: 0 0 20px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  h2 {
+    color: var(--brand-yellow);
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 24px 0 8px;
+  }
+  h2:first-child { margin-top: 0; }
+  p, li {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  ul { margin: 8px 0; padding-left: 20px; }
+  a { color: var(--brand-yellow); }
+  strong { color: #ffffff; }
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="hazard-rule"></div>
+    <h1>Privacy Policy for WARN</h1>
+    <p class="updated"><strong>Last updated:</strong> September 2026</p>
+
+    <div class="card">
+      <p>WARN (Wildlife Alert and Road-hazard Network) is a road-safety app that warns drivers
+        about wildlife and road hazards reported by other drivers nearby. This policy explains
+        what the app collects, what leaves your device, and what it is used for.</p>
+
+      <h2>No accounts, no sign-in</h2>
+      <p>WARN has no user accounts, no login, no email address, and no password. You are not
+        asked who you are, and the app has no way to know. Nothing in this policy depends on
+        you identifying yourself, because you never do.</p>
+
+      <h2>How you are identified — you aren't</h2>
+      <p>This is worth stating precisely, because most apps cannot say it. A hazard report
+        submitted by a public user carries <strong>no identifier of any kind</strong>. What is
+        stored is the hazard's category, its description, its coordinates, the direction of
+        travel, the region, and the time. There is no account, no user ID, no device ID, and no
+        random per-install token attached to a report — not even an anonymous one. The database
+        has no column in which your identity could be recorded, so reports cannot be grouped by
+        who filed them, by us or by anyone else.</p>
+      <p>Fleet and municipal users are different, and deliberately so: those roles authenticate
+        in order to post notices only their own organisation can see, using daily-rotating
+        credentials rather than persistent personal accounts.</p>
+
+      <h2>Location</h2>
+      <p><strong>Where your device is, moment to moment.</strong> WARN needs your location
+        continuously while it is running, because its entire function is to warn you about
+        hazards ahead of you on the road. This runs as a foreground service, so Android shows a
+        persistent notification whenever it is active. This continuous location is used in real
+        time to decide what to alert you about, and <strong>is not recorded, uploaded, or kept
+        as a trail</strong>. WARN does not build a history of where you have driven, and cannot
+        reconstruct your route.</p>
+      <p><strong>Where a hazard is.</strong> This is the important exception, and we want to be
+        plain about it: <strong>when you report a hazard, the hazard's coordinates are your
+        device's coordinates at that moment</strong>, and those coordinates are published — they
+        appear on the map and in the list for every other user in the area. A hazard report is a
+        public statement that something was seen at a particular place at a particular time. It
+        is attached only to that day's random identifier, never to your name, but it is not
+        private.</p>
+
+      <h2>Hazard reports</h2>
+      <p>A report consists of the hazard's category, a short description, its coordinates, the
+        direction of travel, and the time. All of this is public to other users by design — a
+        hazard nobody else can see would not warn anyone. Reports expire automatically after a
+        period that depends on the hazard type.</p>
+      <p>WARN does not take or attach photographs, and does not request camera access.</p>
+
+      <h2>Voice reporting and the microphone</h2>
+      <p>WARN is designed to be used hands-free while driving, so hazards can be reported by
+        voice. This is worth explaining carefully, because it is the part of the app that
+        involves the most outside processing.</p>
+      <ul>
+        <li>The microphone is active <strong>only while you are making a report</strong> — after
+          you press the report control. WARN does not listen continuously, does not use a wake
+          word, and is not recording in the background.</li>
+        <li>Your speech is transcribed to text using <strong>Android's built-in speech
+          recognition</strong>, which in normal operation sends the audio to <strong>Google</strong>
+          for transcription over the network. Some devices can do this offline, but WARN does not
+          rely on that and most devices do not have it available. Google's handling of that audio
+          is governed by Google's own privacy policy.</li>
+        <li>The resulting <strong>text</strong> is then sent for classification to
+          <strong>Google's Gemini service</strong>, reached through a small relay on our own
+          Supabase backend rather than called directly from your phone. This is what lets you say
+          "big moose just past the bridge" in your own words instead of learning a fixed
+          vocabulary. What is sent is the words of your report — not your coordinates, not the
+          audio, and no identifier, because there isn't one to send.</li>
+        <li><strong>WARN does not store the audio.</strong> It is not saved on your device and
+          is never uploaded to WARN's own servers. What is kept is the resulting hazard report,
+          exactly as described above.</li>
+      </ul>
+      <p>The same Gemini service is also used to translate hazard descriptions and app labels
+        into your chosen language. Only the text being translated is sent.</p>
+
+      <h2>IP addresses</h2>
+      <p>One thing does get recorded, and we would rather name it plainly than leave it out.
+        Because WARN has no accounts, the only way to stop somebody scripting abuse of the
+        classification relay described above is to count requests by network address. When your
+        phone uses that relay, <strong>its IP address is stored briefly in a counter table</strong>
+        so we can tell whether one source is making an unreasonable number of requests.</p>
+      <p>That counter holds nothing but the address, a timestamp, and a number. It is
+        <strong>not linked to hazard reports</strong> — the reports have no identifier to link it
+        to — and rows are discarded shortly after their time window ends. It is not used to
+        identify anyone, to build a profile, or to track a device between sessions.</p>
+
+      <h2>Fleet vehicles</h2>
+      <p>WARN can be installed on vehicles operated by a company or agency — for example, taxi
+        or utility fleets — where it may run on a shared device in kiosk mode under a single
+        account belonging to the operator, not to any individual driver. In that configuration
+        the operator can post hazards and notices visible only to their own vehicles.</p>
+      <p>Because such devices are shared and carry no personal account, <strong>WARN cannot tell
+        which driver is using a fleet device</strong>, and does not report driver identity,
+        routes, speed, or behaviour to the operator or to anyone else. WARN is a hazard-warning
+        system, not a driver-monitoring system, and is not designed to be used as one.</p>
+
+      <h2>Where the data goes</h2>
+      <p>Hazard data is stored on <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>,
+        which provides the database and backend hosting. Speech transcription and hazard
+        classification involve Google services as described above. These providers process data
+        on our behalf and have their own privacy policies.</p>
+
+      <h2>Retention</h2>
+      <p>Hazard reports are <strong>deleted outright</strong> when they expire — they are
+        removed from the database, not merely hidden from the map. How long that takes depends on
+        the hazard: wildlife reports last roughly two hours in daylight and busy periods and up to
+        six overnight, resetting whenever another driver confirms the sighting, while other
+        categories have their own timers.</p>
+      <p>If a long-term record of expired hazards is added in future — public agencies are often
+        legally required to retain records of hazards and closures — this policy will be updated
+        before that happens. No such archive exists today.</p>
+
+      <h2>What WARN does not do</h2>
+      <ul>
+        <li>No advertising, and no sale or sharing of data with advertisers or data brokers.</li>
+        <li>No tracking of individuals, and no profile of any driver.</li>
+        <li>No reporting of police activity or speed traps. WARN is a safety system; this is a
+          deliberate design decision, not an oversight.</li>
+        <li>No collection of contacts, messages, photographs, installed apps, or browsing
+          activity, and no camera access at all.</li>
+      </ul>
+
+      <h2>Your choices</h2>
+      <ul>
+        <li>Location and microphone permissions can be denied or revoked at any time in your
+          device's settings. WARN cannot warn you about nearby hazards without location, and
+          cannot take voice reports without the microphone, but denying either does not prevent
+          the rest of the app from working.</li>
+        <li>You can request removal of a hazard report by contacting us below. Please include
+          roughly when and where it was reported — since reports carry no identifier, that is the
+          only way we can find the right one.</li>
+      </ul>
+
+      <h2>Children's privacy</h2>
+      <p>WARN is intended for drivers and is not directed at children. It does not knowingly
+        collect information from children.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy, or requests regarding data, can be sent to:
+        <strong><a href="mailto:keeneyeapps@gmail.com">keeneyeapps@gmail.com</a></strong></p>
+
+      <h2>Changes to this policy</h2>
+      <p>If this policy changes, the "Last updated" date above will be revised, and significant
+        changes will be noted here.</p>
+    </div>
+
+    <a id="back-link" class="back-link" href="/">← Back</a>
+  </div>
+  <script>
+    // Same treatment as BELUGAS's PRIVACY.html: if this page was opened FROM the app in a new
+    // tab (window.opener survives because the About button omits rel="noopener"), closing this
+    // tab returns to the running app instance rather than reloading it. If instead this tab's
+    // own history has a real previous entry, go back. Otherwise let the plain href do its job.
+    document.getElementById("back-link").addEventListener("click", function (event) {
+      if (window.opener && !window.opener.closed) {
+        event.preventDefault();
+        window.close();
+        return;
+      }
+      if (window.history.length > 1) {
+        event.preventDefault();
+        window.history.back();
+      }
+    });
+  </script>
+</body>
+</html>
