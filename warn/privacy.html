@@ -80,7 +80,7 @@
   <div class="page">
     <div class="hazard-rule"></div>
     <h1>Privacy Policy for WARN</h1>
-    <p class="updated"><strong>Last updated:</strong> 20 September 2026</p>
+    <p class="updated"><strong>Last updated:</strong> 10 October 2026</p>
 
     <div class="card">
       <p>WARN (Wildlife Alert and Road-hazard Network) is a road-safety app that warns drivers
@@ -96,38 +96,53 @@
       <p>This is worth stating precisely, because most apps cannot say it. A hazard report
         submitted by a public user carries <strong>no identifier of any kind</strong>. What is
         stored is the hazard's category, its description, its coordinates, the direction of
-        travel, the region, and the time. There is no account, no user ID, no device ID, and no
-        random per-install token attached to a report — not even an anonymous one. The database
-        has no column in which your identity could be recorded, so reports cannot be grouped by
-        who filed them, by us or by anyone else.</p>
-      <p>Fleet and municipal users are different, and deliberately so: those roles authenticate
-        in order to post notices only their own organisation can see, using daily-rotating
-        credentials rather than persistent personal accounts.</p>
+        travel, the region, and the time, with the details listed under "Hazard reports" below.
+        There is no account, no user ID, no device ID, and no per-install token attached to a
+        report — not even an anonymous one. The database has no column in which your identity
+        could be recorded, so reports cannot be grouped by who filed them, by us or by anyone
+        else.</p>
+      <p>The one random value a report does carry is a <strong>one-time undo code</strong>: it
+        lets you take a report back within 30 seconds of making it. A new code is made for every
+        report, it is never stored on your device, and the server keeps only a scrambled (hashed)
+        form of it. Because no two reports share one, it cannot link your reports together.</p>
+      <p>Devices that follow an organisation's notice channel (for example, a cab company's)
+        are different, and deliberately so. Such a device holds a random code for each channel
+        it follows, kept on the device. A code is never shared between channels and never tied
+        to a person. The server keeps only a scrambled form of it, with when the subscription
+        began and when it was last used (updated at most once a day). A subscription that goes
+        unused for 30 days lapses.</p>
 
       <h2>Location</h2>
       <p><strong>Where your device is, moment to moment.</strong> WARN needs your location
         continuously while it is running, because its entire function is to warn you about
         hazards ahead of you on the road. This runs as a foreground service, so Android shows a
         persistent notification whenever it is active. This continuous location is used in real
-        time to decide what to alert you about, and <strong>is not recorded, uploaded, or kept
-        as a trail</strong>. WARN does not build a history of where you have driven, and cannot
-        reconstruct your route.</p>
+        time to decide what to alert you about, and <strong>is not uploaded to WARN's
+        servers</strong>. WARN does keep a road-level log on your device, and it stays there:
+        see "Diagnostic log on your device" below for exactly what it holds and for how long.</p>
       <p><strong>Where a hazard is.</strong> This is the important exception, and we want to be
         plain about it: <strong>when you report a hazard, the hazard's coordinates are your
         device's coordinates at that moment</strong>, and those coordinates are published — they
         appear on the map and in the list for every other user in the area. A hazard report is a
         public statement that something was seen at a particular place at a particular time. It
-        is attached only to that day's random identifier, never to your name, but it is not
-        private.</p>
-      <p><strong>What the app notes about a fix.</strong> WARN keeps a technical log on your
-        device recording how old and how accurate each location fix was — but not the fix
-        itself. That is described under "Diagnostic log on your device" below.</p>
+        is never attached to your name or to any identifier of you, but it is not private.</p>
+      <p><strong>Road data stays on your device.</strong> WARN ships with the road data for its
+        service area and works out which road you are on by itself. It never asks a server for
+        the roads around you.</p>
+      <p><strong>Opening the map.</strong> When you open the map screen, it fetches map images for
+        the area shown from <strong>OpenStreetMap's tile servers</strong>, unless an offline map
+        is installed on your device. Those servers therefore learn which area you are looking at,
+        which is usually where you are, along with your IP address, as any website does. This
+        happens only when you open the map; nothing is fetched while it is closed.</p>
 
       <h2>Hazard reports</h2>
       <p>A report consists of the hazard's category, a short description, its coordinates, the
-        direction of travel, and the time. All of this is public to other users by design — a
-        hazard nobody else can see would not warn anyone. Reports expire automatically after a
-        period that depends on the hazard type.</p>
+        direction of travel, and the time. It also records how accurate and how old the location
+        fix was, how the direction of travel was worked out, and which mapped road the report was
+        made on, so a report's position can be judged rather than taken on trust. All of this is
+        readable by other users by design — a hazard nobody else can see would not warn anyone.
+        Reports expire automatically after a period that depends on the hazard type (see
+        "Retention" below).</p>
       <p>WARN does not take or attach photographs, and does not request camera access.</p>
 
       <h2>Voice reporting and the microphone</h2>
@@ -168,28 +183,44 @@
         identify anyone, to build a profile, or to track a device between sessions.</p>
 
       <h2>Diagnostic log on your device</h2>
-      <p>WARN keeps a small technical log on the device, so that when something goes wrong the
-        cause can be found rather than guessed at. It records things like how long the app took
-        to acquire a GPS fix, how old and how accurate a fix was at the moment you made a
-        report, your speed at that moment, how far away a hazard was, and whether an alert was
-        shown or suppressed.</p>
-      <p><strong>This log is not a record of where you have been.</strong> It stores
-        measurements and decisions, not a stream of positions — the same distinction drawn under
-        Location above. The only coordinates in it are those of hazards you reported, and those
-        are already public, because a hazard report is public by design.</p>
+      <p>WARN keeps a technical log on the device, so that when something goes wrong the cause
+        can be found rather than guessed at. We want to describe it exactly, because it holds
+        more than its name suggests. It records:</p>
+      <ul>
+        <li><strong>Which mapped road you were on, and when.</strong> While you drive on mapped
+          roads, the log notes the road's map identifier and your speed, about every 30 seconds,
+          and each time you turn onto another road. Read in order, these entries show the roads
+          you drove and when, for up to 30 days. They do not contain coordinates.</li>
+        <li><strong>The position of each hazard you report</strong>, rounded to about 11 metres.
+          Those positions are public anyway, because a hazard report is public by design.</li>
+        <li><strong>Each alert decision:</strong> how far away a hazard was, its direction, the
+          direction you were travelling, and whether an alert was shown, spoken or held back.</li>
+        <li>How long the app took to get a GPS fix, how old and how accurate a fix was, and your
+          speed at the moments it records.</li>
+        <li>App events such as starts, stops and crashes.</li>
+      </ul>
+      <p>Alongside the log, the device keeps <strong>the text of the last 200 spoken
+        alerts</strong>, which can include road names. It also keeps <strong>reports you made
+        without a signal</strong>, with their exact position, until they are sent. A report the
+        server refuses is kept on the device rather than thrown away. If you turn on the optional
+        bump meter, it keeps measurements of road jolts, with no positions, for up to 30
+        days.</p>
       <p><strong>The log never leaves your device on its own.</strong> Nothing uploads it, and
         WARN's servers never receive it. If we ever ask you to send a copy so that we can
         investigate a problem you have reported, that is yours to agree to or refuse. If
         diagnostics are ever collected automatically, this policy will be updated before that
         happens.</p>
-      <p>The log holds at most thirty days of activity and trims itself automatically.
-        Uninstalling WARN deletes it.</p>
+      <p>The log holds at most thirty days of activity (and at most 20,000 entries) and trims
+        itself automatically. All of this is stored inside the app's own storage. It is
+        <strong>excluded from Android's cloud backup and from device-to-device transfer</strong>,
+        so it never leaves the device that way either. Uninstalling WARN deletes it.</p>
 
       <h2>Fleet vehicles</h2>
       <p>WARN can be installed on vehicles operated by a company or agency — for example, taxi
         or utility fleets — where it may run on a shared device in kiosk mode under a single
         account belonging to the operator, not to any individual driver. In that configuration
-        the operator can post hazards and notices visible only to their own vehicles.</p>
+        the operator's notices reach only devices following its channel. Hazard reports are never
+        restricted this way: every hazard is visible to every user.</p>
       <p>Because such devices are shared and carry no personal account, <strong>WARN cannot tell
         which driver is using a fleet device</strong>, and does not report driver identity,
         routes, speed, or behaviour to the operator or to anyone else. WARN is a hazard-warning
@@ -198,18 +229,47 @@
       <h2>Where the data goes</h2>
       <p>Hazard data is stored on <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>,
         which provides the database and backend hosting. Speech transcription and hazard
-        classification involve Google services as described above. These providers process data
-        on our behalf and have their own privacy policies.</p>
+        classification involve Google services as described above. Map images come from OpenStreetMap's tile servers when you open the map, as described under
+        Location. These providers have their own privacy policies.</p>
 
       <h2>Retention</h2>
-      <p>Hazard reports are <strong>deleted outright</strong> when they expire — they are
-        removed from the database, not merely hidden from the map. How long that takes depends on
-        the hazard: wildlife reports last roughly two hours in daylight and busy periods and up to
-        six overnight, resetting whenever another driver confirms the sighting, while other
-        categories have their own timers.</p>
-      <p>If a long-term record of expired hazards is added in future — public agencies are often
-        legally required to retain records of hazards and closures — this policy will be updated
-        before that happens. No such archive exists today.</p>
+      <p><strong>Live hazards.</strong> A hazard is removed from the map, and deleted from the
+        live hazard table, when it expires. How long that takes depends on the type:</p>
+      <ul>
+        <li>Moose, caribou, bear and other wild animals: 2 hours by day, 6 hours at night,
+          restarting whenever another driver confirms the sighting.</li>
+        <li>Livestock: 3 hours (at most 12). Dogs and poultry: 1 hour (at most 4).
+          People or children in the road: 15 minutes, restarting on confirmation.</li>
+        <li>Weather and visibility (fog, whiteout, smoke, dust, heavy rain, standing water): 2 hours.
+          Snow drifts: 5 hours, or until 6 am if reported at night. Black ice: 2 hours, or until
+          10 am if reported at night.</li>
+        <li>Crashes: 3 hours; a crash blocking the road: 8 hours; emergency response: 3 hours.
+          Construction: 18 hours. A carcass in the road: 5 hours. Debris: 48 hours. A downed
+          power line: 12 hours. A stalled vehicle: 7 days.</li>
+        <li>Potholes and road damage: 180 days. Structural damage: 30 days. Anything else:
+          2 hours.</li>
+      </ul>
+      <p>Confirmations by other drivers can extend most of these, up to a limit. A hazard a
+        driver clears disappears from the map at once, but is kept out of sight for up to three
+        months before it is deleted.</p>
+      <p><strong>What we keep longer.</strong> Two kinds of record outlast the hazard itself:</p>
+      <ul>
+        <li><strong>Wildlife sightings archive, kept permanently.</strong> When a wildlife report
+          expires, a summary is kept: the animal, its location rounded to about 100 metres, the
+          mapped road, the year, month and hour, how long the report lasted, and how many drivers
+          confirmed it. It holds no exact time, no device information and no link to the original
+          report. It is used to estimate where and when wildlife is a risk. It is not published to
+          app users.</li>
+        <li><strong>Report records, kept with no set end date.</strong> For every report, the
+          server keeps a record of its exact position, time and details. These are used to
+          investigate false or disputed hazards. They are readable only by WARN's administrators, never by app users.</li>
+      </ul>
+      <p><strong>None of these records says who filed a report.</strong> There is no user,
+        device, install or IP address column in any of them, so what is kept indefinitely is a
+        record of what was seen, where and when, not a record about a person. To be honest about
+        the limit of that: a position and a time are not anonymous in the strongest sense. Someone
+        who already knew where you were at that moment could recognise a report as yours. The
+        records are unidentified, not unidentifiable.</p>
 
       <h2>What WARN does not do</h2>
       <ul>
