@@ -80,7 +80,7 @@
   <div class="page">
     <div class="hazard-rule"></div>
     <h1>Privacy Policy for WARN</h1>
-    <p class="updated"><strong>Last updated:</strong> 10 October 2026</p>
+    <p class="updated"><strong>Last updated:</strong> 16 October 2026</p>
 
     <div class="card">
       <p>WARN (Wildlife Alert and Road-hazard Network) is a road-safety app that warns drivers
@@ -105,6 +105,13 @@
         lets you take a report back within 30 seconds of making it. A new code is made for every
         report, it is never stored on your device, and the server keeps only a scrambled (hashed)
         form of it. Because no two reports share one, it cannot link your reports together.</p>
+      <p>For a delay report, the same code is used once more. When your device sees you moving
+        freely again — above 15 mph for 45 seconds — it sends one number, how long you were held
+        up, with the code to show it belongs to the same report. No position is sent with it, and
+        your device does not report its position while it waits. If you turn around, leave the
+        road, or clear the report, nothing is sent. Until then the code is held only in the app's
+        memory and is never written to storage; it is discarded when the delay is no longer on the
+        server, when you report another delay, or when the app restarts.</p>
       <p>Devices that follow an organisation's notice channel (for example, a cab company's)
         are different, and deliberately so. Such a device holds a random code for each channel
         it follows, kept on the device. A code is never shared between channels and never tied
@@ -143,6 +150,12 @@
         readable by other users by design — a hazard nobody else can see would not warn anyone.
         Reports expire automatically after a period that depends on the hazard type (see
         "Retention" below).</p>
+      <p>A delay report — stopped or slow traffic, with no cause named — is stored like any other
+        report, and may later carry one extra number: how long the driver who reported it was
+        held up, which other drivers hear. A delay also has a warning point, which starts at the
+        first report's position. If another driver reports the same delay from a position further
+        back, the warning point moves to that driver's position, and that position is what is
+        published.</p>
       <p>WARN does not take or attach photographs, and does not request camera access.</p>
 
       <h2>Voice reporting and the microphone</h2>
@@ -245,13 +258,15 @@
           10 am if reported at night.</li>
         <li>Crashes: 3 hours; a crash blocking the road: 8 hours; emergency response: 3 hours.
           Construction: 18 hours. A carcass in the road: 5 hours. Debris: 48 hours. A downed
-          power line: 12 hours. A stalled vehicle: 7 days.</li>
+          power line: 12 hours. A stalled vehicle: 7 days. A delay with no cause named:
+          45 minutes, restarting on confirmation (3 hours at most).</li>
         <li>Potholes and road damage: 180 days. Structural damage: 30 days. Anything else:
           2 hours.</li>
       </ul>
       <p>Confirmations by other drivers can extend most of these, up to a limit. A hazard a
         driver clears disappears from the map at once, but is kept out of sight for up to three
         months before it is deleted.</p>
+      <p>A delay's held-up time is stored with the delay and deleted with it.</p>
       <p><strong>What we keep longer.</strong> Two kinds of record outlast the hazard itself:</p>
       <ul>
         <li><strong>Wildlife sightings archive, kept permanently.</strong> When a wildlife report
