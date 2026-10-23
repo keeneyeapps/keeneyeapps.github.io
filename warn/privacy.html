@@ -177,8 +177,16 @@
           <strong>Google's Gemini service</strong>, reached through a small relay on our own
           Supabase backend rather than called directly from your phone. This is what lets you say
           "big moose just past the bridge" in your own words instead of learning a fixed
-          vocabulary. What is sent is the words of your report — not your coordinates, not the
-          audio, and no identifier, because there isn't one to send.</li>
+          vocabulary. What is sent is the words of your report and the language you use the app
+          in — not your coordinates, not the audio, and no identifier, because there isn't one to
+          send.</li>
+        <li><strong>Google may keep and use the words of your report.</strong> WARN uses the free
+          (unpaid) Gemini service. Under Google's terms for it, Google uses the text it receives,
+          and its replies, to provide, improve and develop its products and machine-learning
+          technologies, and human reviewers may read, annotate and process them, after Google has
+          disconnected them from WARN's account and key. So please leave anything personal, such
+          as names or licence plates, out of a voice report. The report buttons and the menu send
+          nothing to Google.</li>
         <li><strong>WARN does not store the audio.</strong> It is not saved on your device and
           is never uploaded to WARN's own servers. What is kept is the resulting hazard report,
           exactly as described above.</li>
@@ -200,7 +208,7 @@
       <p><strong>Our hosting provider's request log.</strong> Separately, Supabase, which hosts
         WARN's server, keeps its own log of every request that reaches it, as web hosts generally
         do. Each entry records when the request arrived, the network (IP) address it came from, the
-        approximate area of that address (city, region and country, worked out from the address
+        approximate area of that address (city, postal code, region and country, worked out from the address
         by Supabase's network provider), the network operator, the name of the software library
         the app uses to connect (not your phone's model), and which part of the service was asked
         for: for example, that a report was filed, or that the list of hazards was fetched. It
@@ -262,7 +270,9 @@
       <h2>Where the data goes</h2>
       <p>Hazard data is stored on <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>,
         which provides the database and backend hosting. Speech transcription and hazard
-        classification involve Google services as described above. Map images come from OpenStreetMap's tile servers when you open the map, as described under
+        classification involve Google services as described above; on Gemini's free service,
+        Google may also use the text of voice reports for its own purposes, as described under
+        Voice reporting. Map images come from OpenStreetMap's tile servers when you open the map, as described under
         Location. These providers have their own privacy policies.</p>
 
       <h2>Retention</h2>
