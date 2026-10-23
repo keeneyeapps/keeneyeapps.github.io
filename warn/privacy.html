@@ -167,11 +167,12 @@
         <li>The microphone is active <strong>only while you are making a report</strong> — after
           you press the report control. WARN does not listen continuously, does not use a wake
           word, and is not recording in the background.</li>
-        <li>Your speech is transcribed to text using <strong>Android's built-in speech
-          recognition</strong>, which in normal operation sends the audio to <strong>Google</strong>
-          for transcription over the network. Some devices can do this offline, but WARN does not
-          rely on that and most devices do not have it available. Google's handling of that audio
-          is governed by Google's own privacy policy.</li>
+        <li>Your speech is transcribed to text by <strong>your device's speech recognition
+          service, usually Google's</strong>, which in normal operation sends the audio to that
+          service's provider for transcription over the network. Some devices can do this offline,
+          but WARN does not rely on that and most devices do not have it available. WARN never
+          sends the audio anywhere itself; the provider's handling of it is governed by that
+          provider's own privacy policy.</li>
         <li>The resulting <strong>text</strong> is then sent for classification to
           <strong>Google's Gemini service</strong>, reached through a small relay on our own
           Supabase backend rather than called directly from your phone. This is what lets you say
@@ -182,8 +183,9 @@
           is never uploaded to WARN's own servers. What is kept is the resulting hazard report,
           exactly as described above.</li>
       </ul>
-      <p>The same Gemini service is also used to translate hazard descriptions and app labels
-        into your chosen language. Only the text being translated is sent.</p>
+      <p>The same Gemini service is also used to translate the app's own fixed labels and
+        messages into your chosen language. Only that fixed text, and the name of the language to
+        translate it into, is sent: never your reports, your words or anything else about you.</p>
 
       <h2>IP addresses</h2>
       <p>One thing does get recorded, and we would rather name it plainly than leave it out.
@@ -195,6 +197,23 @@
         <strong>not linked to hazard reports</strong> — the reports have no identifier to link it
         to — and rows are discarded shortly after their time window ends. It is not used to
         identify anyone, to build a profile, or to track a device between sessions.</p>
+      <p><strong>Our hosting provider's request log.</strong> Separately, Supabase, which hosts
+        WARN's server, keeps its own log of every request that reaches it, as web hosts generally
+        do. Each entry records when the request arrived, the network (IP) address it came from, the
+        approximate area of that address (city, region and country, worked out from the address
+        by Supabase's network provider), the network operator, the name of the software library
+        the app uses to connect (not your phone's model), and which part of the service was asked
+        for: for example, that a report was filed, or that the list of hazards was fetched. It
+        does not record what a report said or where it was.</p>
+      <p>Because the app fetches the hazard list regularly while it is running, these entries
+        show when a device at a given network address was using WARN, and roughly where that
+        address is. And because the entry for a filed report shows when it arrived, a report could in
+        principle be matched to the network address it came from, for as long as the entry is
+        kept. We are confirming with Supabase how long it keeps these logs. At present, entries
+        from WARN's first day (late July 2026) are still held. We will update this page once we
+        know the exact period.
+        We read this log only to investigate faults and abuse, never to identify or follow
+        anyone.</p>
 
       <h2>Diagnostic log on your device</h2>
       <p>WARN keeps a technical log on the device, so that when something goes wrong the cause
@@ -297,8 +316,9 @@
           record of it is kept, marked as withdrawn.</li>
       </ul>
       <p><strong>None of these records says who filed a report.</strong> There is no user,
-        device, install or IP address column in any of them, so what is kept indefinitely is a
-        record of what was seen, where and when, not a record about a person. To be honest about
+        device, install or IP address column in any of them. Our hosting provider's request logs
+        do record IP addresses; see IP addresses above. What WARN keeps indefinitely is therefore
+        a record of what was seen, where and when, not a record about a person. To be honest about
         the limit of that: a position and a time are not anonymous in the strongest sense. Someone
         who already knew where you were at that moment could recognise a report as yours. The
         records are unidentified, not unidentifiable.</p>
