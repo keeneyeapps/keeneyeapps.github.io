@@ -102,7 +102,8 @@
         could be recorded, so reports cannot be grouped by who filed them, by us or by anyone
         else.</p>
       <p>The one random value a report does carry is a <strong>one-time undo code</strong>: it
-        lets you take a report back within 30 seconds of making it. A new code is made for every
+        lets you take a report back for about a minute and a half after it reaches our server. A new
+        code is made for every
         report, it is never stored on your device, and the server keeps only a scrambled (hashed)
         form of it. Because no two reports share one, it cannot link your reports together.</p>
       <p>For a delay report, the same code is used once more. When your device sees you moving
@@ -291,7 +292,9 @@
           administrator, is never included.</li>
         <li><strong>Report records, kept with no set end date.</strong> For every report, the
           server keeps a record of its exact position, time and details. These are used to
-          investigate false or disputed hazards. They are readable only by WARN's administrators, never by app users.</li>
+          investigate false or disputed hazards. They are readable only by WARN's administrators, never by app users.
+          This includes a report you took back: it disappears from the map straight away, but the server's
+          record of it is kept, marked as withdrawn.</li>
       </ul>
       <p><strong>None of these records says who filed a report.</strong> There is no user,
         device, install or IP address column in any of them, so what is kept indefinitely is a
