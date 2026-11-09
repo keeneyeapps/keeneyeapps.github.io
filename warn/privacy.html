@@ -80,7 +80,7 @@
   <div class="page">
     <div class="hazard-rule"></div>
     <h1>Privacy Policy for WARN</h1>
-    <p class="updated"><strong>Last updated:</strong> 31 October 2026</p>
+    <p class="updated"><strong>Last updated:</strong> 9 November 2026</p>
 
     <div class="card">
       <p>WARN (Wildlife Alert and Road-hazard Network) is a road-safety app that warns drivers
@@ -101,11 +101,23 @@
         report — not even an anonymous one. The database has no column in which your identity
         could be recorded, so reports cannot be grouped by who filed them, by us or by anyone
         else.</p>
-      <p>The one random value a report does carry is a <strong>one-time undo code</strong>: it
-        lets you take a report back for about a minute and a half after it reaches our server. A new
-        code is made for every
-        report, it is never stored on your device, and the server keeps only a scrambled (hashed)
-        form of it. Because no two reports share one, it cannot link your reports together.</p>
+      <p>The one random value a report does carry is its <strong>report code</strong>. A new code
+        is made for every report, and the server keeps only a scrambled (hashed) form of it. Your
+        device holds the code only in the app's memory, never in storage, so it is gone when the
+        app restarts. Because no two reports share one, it cannot link one of your reports to
+        another. The code lets the device that filed a report, and only that device:</p>
+      <ul>
+        <li><strong>take the report back</strong>, for about a minute and a half after it reaches
+          our server;</li>
+        <li><strong>correct the species</strong> on a wildlife report, while it is on the map;</li>
+        <li><strong>mark the report still there</strong> when you pass it again, while it is on the
+          map, for short-lived hazards such as standing water, ice, fog, debris or a crash blocking
+          the road. It is not offered for wildlife or other live animals, people in the road, road
+          or structural damage, delays, construction, or stalled vehicles. This keeps the report on the map the way a confirmation would, but it is not counted as one.
+          It does tell our server that whoever filed that report passed it again at that time: no
+          position is sent, but the hazard's own position implies one. This is possible only while
+          your device still holds the code.</li>
+      </ul>
       <p>For a delay report, the same code is used once more. When your device sees you moving
         freely again — above 15 mph for 45 seconds — it sends one number, how long you were held
         up, with the code to show it belongs to the same report. No position is sent with it, and
@@ -217,9 +229,9 @@
         show when a device at a given network address was using WARN, and roughly where that
         address is. And because the entry for a filed report shows when it arrived, a report could in
         principle be matched to the network address it came from, for as long as the entry is
-        kept. We are confirming with Supabase how long it keeps these logs. At present, entries
-        from WARN's first day (late July 2026) are still held. We will update this page once we
-        know the exact period.
+        kept. Supabase keeps these entries for <strong>about 90 days</strong>: when we checked on
+        9 November 2026, the oldest entry it still held for WARN was 90 days old. Supabase, not
+        WARN, sets this period. We check this again whenever WARN's Supabase plan changes.
         We read this log only to investigate faults and abuse, never to identify or follow
         anyone.</p>
 
@@ -266,6 +278,11 @@
         which driver is using a fleet device</strong>, and does not report driver identity,
         routes, speed, or behaviour to the operator or to anyone else. WARN is a hazard-warning
         system, not a driver-monitoring system, and is not designed to be used as one.</p>
+      <p><strong>Area notices and the fleet switch.</strong> An operator's office can send its own vehicles a notice about
+        an area (for example, a flooded neighbourhood) or about a single address. Each fleet device decides by itself, from its own position, whether
+        it is inside the area or approaching it, and sends nothing back: not its position, and not whether the driver
+        acknowledged the notice (an acknowledgement stays only in the device's memory, until the vehicle leaves the area). The office can also
+        pause WARN on all of its vehicles; a fleet device keeps the last setting it received on the device itself.</p>
       <p><strong>Updates on fleet devices.</strong> The fleet version of WARN, installed only on fleet devices and
         never through Google Play, asks the fleet's update server, when WARN starts and about every four hours, whether a
         newer version is available, and downloads it only when the driver taps to install; these requests carry no identifier, no location
@@ -298,7 +315,9 @@
         <li>Potholes and road damage: 180 days. Structural damage: 30 days. Anything else:
           2 hours.</li>
       </ul>
-      <p>Confirmations by other drivers can extend most of these, up to a limit. A hazard a
+      <p>Confirmations by other drivers can extend most of these, up to a limit, and so can the
+        driver who filed a report, by marking it still there when passing it again (that is not
+        counted as a confirmation). A hazard a
         driver clears disappears from the map at once, but is kept out of sight for up to three
         months before it is deleted.</p>
       <p>A delay's held-up time is stored with the delay and deleted with it.</p>
@@ -333,10 +352,11 @@
               its exact position, its region, hazard type and category, the time it was reported and the time the server
               received it. This includes a report you took back: it disappears from the map straight away, but
               this record of it is kept, marked as withdrawn.</li>
-            <li><strong>A more detailed record of every report and confirmation</strong>, including one added to
-              a hazard already on the map: its exact position and time, the hazard type, its heading, road and position
-              accuracy, and, when the species on a report is corrected, the species before and after. It is deleted 32 days after the hazard was last reported or confirmed,
-              once the hazard is no longer on the map.</li>
+            <li><strong>A more detailed record of every report, confirmation and still-there mark</strong>, including
+              a report added to a hazard already on the map: its exact position and time, the hazard type, its heading,
+              road and position accuracy, and, when the species on a report is corrected, the species before and after.
+              A still-there mark records only its time and the hazard type. It is deleted 32 days after the hazard was
+              last reported, confirmed or marked still there, once the hazard is no longer on the map.</li>
           </ul></li>
       </ul>
       <p><strong>None of these records says who filed a report.</strong> There is no user,
