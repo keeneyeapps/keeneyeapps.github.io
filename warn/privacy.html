@@ -80,7 +80,7 @@
   <div class="page">
     <div class="hazard-rule"></div>
     <h1>Privacy Policy for WARN</h1>
-    <p class="updated"><strong>Last updated:</strong> 9 November 2026</p>
+    <p class="updated"><strong>Last updated:</strong> 13 November 2026</p>
 
     <div class="card">
       <p>WARN (Wildlife Alert and Road-hazard Network) is a road-safety app that warns drivers
@@ -108,7 +108,8 @@
         another. The code lets the device that filed a report, and only that device:</p>
       <ul>
         <li><strong>take the report back</strong>, for about a minute and a half after it reaches
-          our server;</li>
+          our server (in WARN Drive, the web version, the code lives only in the open page and is
+          gone when you close or reload it);</li>
         <li><strong>correct the species</strong> on a wildlife report, while it is on the map;</li>
         <li><strong>mark the report still there</strong> when you pass it again, while it is on the
           map, for short-lived hazards such as standing water, ice, fog, debris or a crash blocking
@@ -118,6 +119,8 @@
           position is sent, but the hazard's own position implies one. This is possible only while
           your device still holds the code.</li>
       </ul>
+      <p>WARN Drive, the web version, uses the code only for that first purpose. Species
+        correction and "still there" are offered in the Android app only.</p>
       <p>For a delay report, the same code is used once more. When your device sees you moving
         freely again — above 15 mph for 45 seconds — it sends one number, how long you were held
         up, with the code to show it belongs to the same report. No position is sent with it, and
@@ -125,6 +128,11 @@
         road, or clear the report, nothing is sent. Until then the code is held only in the app's
         memory and is never written to storage; it is discarded when the delay is no longer on the
         server, when you report another delay, or when the app restarts.</p>
+      <p><strong>WARN Drive and reports.</strong> WARN Drive can also send a hazard report. When
+        you tap a report button, Drive sends the hazard type, where you are at that moment and how
+        accurate that location was, the direction you are travelling if your phone knows it, and
+        the time. The report is stored on WARN's server and shown to other drivers, without a name
+        or an account.</p>
       <p>Devices that follow an organisation's notice channel (for example, a cab company's)
         are different, and deliberately so. Such a device holds a random code for each channel
         it follows, kept on the device. A code is never shared between channels and never tied
@@ -140,6 +148,13 @@
         time to decide what to alert you about, and <strong>is not uploaded to WARN's
         servers</strong>. WARN does keep a road-level log on your device, and it stays there:
         see "Diagnostic log on your device" below for exactly what it holds and for how long.</p>
+      <p><strong>WARN Drive, the web version.</strong> Drive asks for your location when you tap
+        "Show my position" or a report button. After you tap "Show my position", it follows your
+        phone's position for as long as the page is open and the screen is on, to draw your dot and
+        work out distances. If you tap a report button first, Drive asks for one position at that
+        moment and does not follow you. It stops when the screen turns off or you switch away, and
+        keeps nothing when you close the page. Your position is not sent anywhere, except as the
+        hazard's coordinates when you tap a report button.</p>
       <p><strong>Where a hazard is.</strong> This is the important exception, and we want to be
         plain about it: <strong>when you report a hazard, the hazard's coordinates are your
         device's coordinates at that moment</strong>, and those coordinates are published — they
@@ -153,7 +168,11 @@
         the area shown from <strong>OpenStreetMap's tile servers</strong>, unless an offline map
         is installed on your device. Those servers therefore learn which area you are looking at,
         which is usually where you are, along with your IP address, as any website does. This
-        happens only when you open the map; nothing is fetched while it is closed.</p>
+        happens only when you open the map; nothing is fetched while it is closed. The web version,
+        WARN Drive, is different: it does not use OpenStreetMap's tile servers; its map files come
+        from this project's own site, keeneyeapps.github.io, which GitHub hosts, so GitHub learns
+        your IP address and which part of the map you are looking at. The page itself is served by
+        Cloudflare, which sees your IP address as any web host does.</p>
 
       <h2>Hazard reports</h2>
       <p>A report consists of the hazard's category, a short description, its coordinates, the
